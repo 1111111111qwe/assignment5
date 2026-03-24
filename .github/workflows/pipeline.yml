@@ -58,7 +58,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: mlruns
-          path: mlruns
+          
       
       - name: Debug mlruns location
         run: |
