@@ -5,8 +5,10 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
-tracking_uri = "file://" + os.path.abspath("mlruns")
-mlflow.set_tracking_uri(tracking_uri)
+mlflow.set_tracking_uri("file:./mlruns")
+
+# tracking_uri = "file://" + os.path.abspath("mlruns")
+# mlflow.set_tracking_uri(tracking_uri)
 
 mlflow.set_experiment("assignment5")
 
