@@ -5,7 +5,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
-mlflow.set_tracking_uri("./mlruns")
+import os
+mlflow.set_tracking_uri(os.path.abspath("mlruns"))
 mlflow.set_experiment("assignment5")
 
 X, y = load_iris(return_X_y=True)
