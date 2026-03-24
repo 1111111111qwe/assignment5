@@ -22,8 +22,6 @@ jobs:
         run: dvc pull || true
 
       - name: Train and log to MLflow
-        env:
-          MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
         run: python train.py
 
       - name: Upload model_info.txt
@@ -61,11 +59,8 @@ jobs:
         with:
           name: mlruns
           path: mlruns
-    
 
       - name: Check accuracy threshold
-        env:
-          MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
         run: python check_threshold.py
 
       - name: Mock Docker build
