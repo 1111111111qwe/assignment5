@@ -59,6 +59,15 @@ jobs:
         with:
           name: mlruns
           path: mlruns
+      
+      - name: Debug mlruns location
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Files here:"
+          ls -la
+          echo "mlruns contents:"
+          find . -name "*.yaml" | head -20
 
       - name: Check accuracy threshold
         run: python check_threshold.py
