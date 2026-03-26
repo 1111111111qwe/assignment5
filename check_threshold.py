@@ -1,11 +1,9 @@
-
 import mlflow
 import sys
 import os
 
 tracking_uri = "file://" + os.path.abspath("mlruns")
 mlflow.set_tracking_uri(tracking_uri)
-mlflow.set_experiment("assignment5")
 
 print(f"Tracking URI: {tracking_uri}")
 
@@ -16,17 +14,19 @@ print(f"Run ID: {run_id}")
 
 client = mlflow.tracking.MlflowClient()
 
+experiment = client.get_experiment_by_name("assignment5")
+print(f"Experiment ID: {experiment.experiment_id}")
+
 runs = client.search_runs(
-    experiment_ids=["286619755676499285"],
-    filter_string=f"run_id = '{run_id}'"
+    experiment_ids=[experiment.experiment_id],
+    filter_string=f"attributes.run_id = '{run_id}'"
 )
 
 if not runs:
-    print("Run not found in experiment!")
+    print("Run not found!")
     sys.exit(1)
 
 accuracy = runs[0].data.metrics["accuracy"]
-
 print(f"Accuracy: {accuracy}")
 
 if accuracy < 0.85:
