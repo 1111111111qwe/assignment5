@@ -30,7 +30,7 @@ accuracy = runs[0].data.metrics["accuracy"]
 print(f"Accuracy: {accuracy}")
 
 if accuracy < 1.1:
-    print("FAILED: accuracy is below 0.85 threshold!")
+    print("FAILED: accuracy is below 1.1 threshold!")
     sys.exit(1)
 else:
-    print("PASSED: accuracy meets the 0.85 threshold!")
+    print("PASSED: accuracy meets the 1.1 threshold!")
